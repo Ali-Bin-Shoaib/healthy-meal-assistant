@@ -1,19 +1,28 @@
-.hero-section {
+/* .hero-section { */
+/* background-image: url('../../assets/images/top-ten-foods-for-health-2x.jpg'); */
+/* background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat; */
+/* } */
+.hero-text {
+	backdrop-filter: grayscale(30%);
+	background-color: rgba(94, 94, 94, 0.24);
+}
+header,
+footer {
+	background: rgb(209, 231, 221) !important;
+	background: linear-gradient(
+		129deg,
+		rgba(209, 231, 221, 1) 70%,
+		rgb(150, 180, 150) 100%
+	) !important;
+}
+footer {
+	background: #000;
+}
+main {
 	background-image: url('../../assets/images/top-ten-foods-for-health-2x.jpg');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-}
-.hero-section h1 {
-	backdrop-filter: grayscale(30%);
-	background-color: rgba(59, 59, 59, 0.144);
-}
-header {
-	/* background: rgb(209, 231, 221); */
-	background: linear-gradient(
-		129deg,
-		rgba(150, 180, 150,1) 5%,
-		rgba(209, 231, 221) 80%
-		/* rgb(150, 180, 150) 9% */
-	);
 }
