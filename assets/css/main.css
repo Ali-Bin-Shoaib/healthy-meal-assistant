@@ -10,19 +10,18 @@
 }
 header,
 footer {
-	background: rgb(209, 231, 221) !important;
-	background: linear-gradient(
-		129deg,
-		rgba(209, 231, 221, 1) 70%,
-		rgb(150, 180, 150) 100%
-	) !important;
+	background: linear-gradient(to left, #266330, #4caf50);
+	padding: 10px;
+	color: white;
+	text-align: center;
 }
-footer {
-	background: #000;
+.form-container {
+	backdrop-filter: blur(7px);
 }
-main {
+.main-page-background {
 	background-image: url('../../assets/images/top-ten-foods-for-health-2x.jpg');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
+	background-attachment: fixed;
 }

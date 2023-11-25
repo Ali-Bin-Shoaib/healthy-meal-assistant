@@ -18,7 +18,7 @@
 		<script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 	</head>
 	<body>
-		<header class="shadowx">
+		<header class="shadow">
 			<nav class="navbar navbar-expand-lg text-capitalize">
 				<div class="container">
 					<a class="navbar-brand" href="./">
@@ -46,12 +46,12 @@
 							<li class="nav-item">
 								<a class="nav-link" href="./calories-info.html">what is calories?</a>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="./about-us">about us</a>
+							<!-- <li class="nav-item">
+								<a class="nav-link" href="./about-us.html">about us</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="./contact">contact</a>
-							</li>
+								<a class="nav-link" href="./contact.html">contact</a>
+							</li> -->
 						</ul>
 						<a class="btn btn-lg btn-outline-success px-3" href="./login.html"
 							><i class="bi-person me-2"></i>login</a
@@ -60,25 +60,45 @@
 				</div>
 			</nav>
 		</header>
-		<main>
+		<main class="main-page-background">
 			<section class="container-fluid p-0 hero-section py-5 text-capitalize">
 				<h1 class="text-white display-1 text-center p-5 my-5 hero-text">
-					be more healthy with us
+					be healthy with us
 				</h1>
 			</section>
 			<section class="container-fluid p-0 create-meal py-5 my-5 text-capitalize">
-				<div class="container text-capitalize bg-white rounded-5 p-3">
+				<div
+					class="container text-capitalize bg-white rounded-5 p-3 bg-opacity-75 form-container">
 					<h1 class="text-center">create a meal</h1>
-					<form class="row g-3 p-3">
+					<form
+						class="row g-3 p-3 bg-opacity-50"
+						method="post"
+						action="./server/index.php">
 						<div class="col-md-6">
 							<label for="title" class="form-label">title</label>
-							<input type="text" class="form-control" id="title" />
+							<input type="text" class="form-control" id="title" name="title" />
 						</div>
 						<div class="col-md-6">
 							<label for="image" class="form-label">image</label>
 							<input type="file" class="form-control" id="image" />
 						</div>
-						<div class="col-12">
+						<div class="col-md-10">
+							<label for="meal">meal</label>
+							<input
+								type="text"
+								class="form-control"
+								id="meal"
+								name="meal-items"
+								value="250 chicken and 2 onions and 1 tomato" />
+						</div>
+						<div class="col-md-2">
+							<input
+								type="submit"
+								class="btn btn-outline-secondary text-black my-4"
+								value="check calories"
+								name="check-calories" />
+						</div>
+						<!-- <div class="col-12">
 							<div class="row items-row">
 								<div class="col-md-6">
 									<label for="items" class="form-label">items</label>
@@ -105,22 +125,26 @@
 									<label for="serving-size" class="form-label pb-3"></label>
 									<button
 										type="button"
+										onclick="addItem()"
 										class="btn btn-success form-control btn-sm fs-5 fw-bolder rounded-start">
 										<i class="bi-plus-lg"></i>
 									</button>
 									<label for="serving-size" class="form-label pb-3"></label>
 									<button
 										type="button"
+										onclick="removeItem()"
 										class="btn btn-danger form-control btn-sm fs-5 fw-bolder rounded-end">
 										<i class="bi-trash"></i>
 									</button>
 								</div>
 							</div>
-						</div>
+						</div> -->
 						<div class="col-12">
 							<div class="form-check">
-								<input class="form-check-input" type="checkbox" id="gridCheck" />
-								<label class="form-check-label" for="gridCheck"> Check me out </label>
+								<input class="form-check-input" type="checkbox" id="public-check" />
+								<label class="form-check-label" for="public-check">
+									make this meal public
+								</label>
 							</div>
 						</div>
 						<div class="col-md-12">
@@ -130,16 +154,49 @@
 							<label id="total-calories" class="form-label">0</label>
 						</div>
 						<div class="col-12 text-center">
-							<button type="submit" class="btn btn-primary text-capitalize w-25">
+							<button
+								type="submit"
+								class="btn btn-primary text-capitalize w-25"
+								name="create-meal">
 								create
 							</button>
 						</div>
 					</form>
 				</div>
 			</section>
-			<footer>
-				<div class="container text-white">&copy; created by ali bin shoaib.</div>
+			<footer class="p-5 mt-5 text-capitalize">
+				<div class="container"><b>&copy;</b> created by <b>ali bin shoaib.</b></div>
 			</footer>
 		</main>
+		<script>
+			function addItem() {
+				// Clone the first item input and append it to the container
+				var clonedItem = $('#itemsContainer .item-row:first').clone();
+				clonedItem.find('input').val(''); // Clear the input values
+				$('#itemsContainer').append(clonedItem);
+			}
+
+			function removeItem(button) {
+				// Remove the parent row of the clicked remove button
+				$(button).closest('.item-row').remove();
+			}
+			function getMealInfo() {
+				const info = document.querySelector('input').value;
+				console.log('data');
+				const xhr = new XMLHttpRequest();
+				xhr.open(
+					'POST',
+					'http://localhost:8080/day/index.php?username=' + username
+				);
+				xhr.onload = () => {
+					if (xhr.status === 200) {
+						const data = JSON.parse(xhr.responseText);
+						console.table(data);
+						alert(xhr.responseText);
+					} else alert(xhr.responseText);
+				};
+				xhr.send(username);
+			}
+		</script>
 	</body>
 </html>
