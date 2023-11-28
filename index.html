@@ -1,202 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
-		<!-- links -->
-		<link
-			rel="stylesheet"
-			href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
-		<link
-			rel="stylesheet"
-			href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css" />
-		<link rel="stylesheet" href="./assets/css/main.css" />
 
-		<!-- scripts -->
-		<script src="./node_modules/jquery/dist/jquery.min.js"></script>
-		<script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-	</head>
-	<body>
-		<header class="shadow">
-			<nav class="navbar navbar-expand-lg text-capitalize">
-				<div class="container">
-					<a class="navbar-brand" href="./">
-						<img
-							src="./assets/images/healthy-food-assistant-high-resolution-logo.svg"
-							alt="logo"
-							width="150" />
-						<b class="text-center">diet meal assistant</b></a
-					>
-					<button
-						class="navbar-toggler"
-						type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#navbarContent"
-						aria-controls="navbarContent"
-						aria-expanded="false"
-						aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+	<!-- links -->
+	<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css" />
+	<link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css" />
+	<link rel="stylesheet" href="./assets/css/main.css" />
+
+	<!-- scripts -->
+	<script src="./node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</head>
+
+<body>
+	<header class="shadow">
+		<nav class="navbar navbar-expand-lg text-capitalize">
+			<div class="container">
+				<a class="navbar-brand" href="./">
+					<img src="./assets/images/healthy-food-assistant-high-resolution-logo-transparent.svg" alt="logo"
+						width="75" />
+					<!-- <b class="text-center">diet meal assistant</b> -->
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+					aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-4">
+						<li class="nav-item">
+							<a class="nav-link text-white" href="./meals.html">meals</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-white" href="./calories-info.html">what is calories?</a>
+						</li>
+					</ul>
+					<!-- <a class="btn btn-lg btn-outline-light px-3" href="./login.html">
+						<i class="bi-person me-2"></i>login</a> -->
+				</div>
+			</div>
+		</nav>
+	</header>
+	<main class="main-page-background hero-text">
+		<section class="container-fluid p-0 hero-section py-5 text-capitalize ">
+			<h1 class="text-white display-1 text-center p-5 my-5 hero-text fw-semibold">
+				be healthy with us
+			</h1>
+		</section>
+		<section class="container w-25 text-capitalize rounded-5 p-3 py-5 my-5 form-container shadow-lg">
+			<h3 class="text-center fw-semibold">calories calculator</h3>
+			<small class=" ms-5 ps-5">fill the following fields to get your calories</small>
+			<form class="row g-3 p-3" id="calculate-calories">
+				<label for="goal" class="form-label fw-semibold col-md-2">Goal</label>
+				<div class="col-md-10">
+					<input type="radio" class="btn-check" name="goal" id="lose-weight" value="lose-weight"
+						autocomplete="off" checked />
+					<label class="btn btn-outline-primary btn-sm" for="lose-weight">lose weight</label>
+					<input type="radio" name="goal" class="btn-check" id="maintain-weight" value="maintain-weight"
+						autocomplete="off" />
+					<label class="btn btn-outline-primary btn-sm" for="maintain-weight">maintain weight</label>
+					<input type="radio" name="goal" class="btn-check" id="gain-weight" value="gain-weight"
+						autocomplete="off" />
+					<label class="btn btn-outline-primary btn-sm" for="gain-weight">gain weight</label>
+				</div>
+				<label for="gender" class="form-label fw-semibold col-md-2">Gender</label>
+				<div class="col-md-10">
+					<input type="radio" class="btn-check" name="gender" value="female" id="female" checked
+						autocomplete="off" />
+					<label class="btn btn-outline-primary btn-sm" for="female">Female</label>
+					<input type="radio" name="gender" value="male" class="btn-check" id="male" autocomplete="off" />
+					<label class="btn btn-outline-primary btn-sm" for="male">male</label>
+				</div>
+				<label for="height" class="form-label fw-semibold col-md-2">Height</label>
+				<div class="col-10">
+					<input type="number" name="height" id="height" class="form-control" placeholder="180" max="200"
+						min="50" />
+				</div>
+				<label for="weight" class="form-label fw-semibold col-md-2">Weight</label>
+				<div class="col-10">
+					<input type="number" name="weight" id="weight" class="form-control" max="1000" min="20" />
+				</div>
+				<label for="age" class="form-label fw-semibold col-md-2">Age</label>
+				<div class="col-10">
+					<input type="number" name="age" id="age" class="form-control" max="100" min="5" />
+				</div>
+				<label for="activity-level" class="form-label fw-semibold col-md-2">Activity level</label>
+				<div class="col-10">
+					<select name="activity-level" id="activity-level" class="form-select text-capitalize">
+						<option value="notActive">not active</option>
+						<option value="lightlyActive">lightly active</option>
+						<option value="active">active</option>
+						<option value="veryActive">very active</option>
+						<option value="extraActive">extremely active</option>
+					</select>
+				</div>
+
+				<label id="daily-calories" class="form-label fw-semibold col-md-2">calories: </label>
+				<div class="col-md-10">
+					<input type="number" id="calories" min="0" class="form-control" />
+				</div>
+				<div class="col-12 text-center">
+					<button class="btn btn-success text-capitalize w-25" type="submit" name="calculate-calories">
+						calculate
 					</button>
-					<div class="collapse navbar-collapse" id="navbarContent">
-						<ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-4">
-							<li class="nav-item">
-								<a class="nav-link" href="./meals.html">meals</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="./calories-info.html">what is calories?</a>
-							</li>
-							<!-- <li class="nav-item">
-								<a class="nav-link" href="./about-us.html">about us</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="./contact.html">contact</a>
-							</li> -->
-						</ul>
-						<a class="btn btn-lg btn-outline-success px-3" href="./login.html"
-							><i class="bi-person me-2"></i>login</a
-						>
+				</div>
+			</form>
+		</section>
+		<section class="container mx-auto p-5 text-capitalize form-container rounded-5">
+			<h3 class="  text-center mb-5">meals for you</h3>
+			<div class="d-flex justify-content-between align-items-center meal-filters">
+				<div class="d-flex gap-2">
+					<b class="form-label ">meal type </b>
+					<select name="mealType" id="mealType" class="text-capitalize form-select-sm">
+						<option value="breakfast">breakfast</option>
+						<option value="dinner">dinner</option>
+						<option value="lunch">lunch</option>
+						<option value="snack">snack</option>
+						<option value="teatime">teatime</option>
+					</select>
+				</div>
+				<div class="d-flex gap-2">
+					<b class="form-label ">Dish Type </b>
+					<select name="dishType" id="dishType" class="text-capitalize form-select-sm">
+						<option value="biscuits and cookies">biscuits and cookies</option>
+						<option value="bread">bread</option>
+						<option value="cereals">cereals</option>
+						<option value="condiments and sauces">condiments and sauces</option>
+						<option value="desserts">desserts</option>
+						<option value="drinks">drinks</option>
+						<option value="main course">main course</option>
+						<option value="pancake">pancake</option>
+						<option value="preserve">preserve</option>
+						<option value="salad">salad</option>
+						<option value="sandwiches">sandwiches</option>
+						<option value="soup">soup</option>
+						<option value="starter">starter</option>
+						<option value="sweets">sweets</option>
+						<option value="egg">egg</option>
+
+					</select>
+
+				</div>
+				<div class="d-flex gap-2">
+					<b class="form-label ">diet type </b>
+					<select name="dietType" id="dietType" class="text-capitalize form-select-sm">
+						<option value="balanced">balanced</option>
+						<option value="high-fiber">high-fiber</option>
+						<option value="high-protein">high-protein</option>
+						<option value="low-carb">low-carb</option>
+						<option value="low-fat">low-fat</option>
+						<option value="low-sodium">low-sodium</option>
+					</select>
+				</div>
+				<div class="d-flex gap-2">
+					<label class="form-label ">calories </label>
+					<input type="range" class="form-range" id="caloriesRange" min="0" max="5000" value="">
+					<b></b>
+
+				</div>
+				<!-- <div class="d-flex">
+					<button class="btn btn-secondary">search</button>
+					
+				</div> -->
+			</div>
+			<hr />
+			<div class="container mt-5 px-5  ">
+				<div id="loading" class="text-center visually-hidden ">
+
+					<div class="spinner-border  " role="status">
 					</div>
 				</div>
-			</nav>
-		</header>
-		<main class="main-page-background">
-			<section class="container-fluid p-0 hero-section py-5 text-capitalize">
-				<h1 class="text-white display-1 text-center p-5 my-5 hero-text">
-					be healthy with us
-				</h1>
-			</section>
-			<section class="container-fluid p-0 create-meal py-5 my-5 text-capitalize">
-				<div
-					class="container text-capitalize bg-white rounded-5 p-3 bg-opacity-75 form-container">
-					<h1 class="text-center">create a meal</h1>
-					<form
-						class="row g-3 p-3 bg-opacity-50"
-						method="post"
-						action="./server/index.php">
-						<div class="col-md-6">
-							<label for="title" class="form-label">title</label>
-							<input type="text" class="form-control" id="title" name="title" />
-						</div>
-						<div class="col-md-6">
-							<label for="image" class="form-label">image</label>
-							<input type="file" class="form-control" id="image" />
-						</div>
-						<div class="col-md-10">
-							<label for="meal">meal</label>
-							<input
-								type="text"
-								class="form-control"
-								id="meal"
-								name="meal-items"
-								value="250 chicken and 2 onions and 1 tomato" />
-						</div>
-						<div class="col-md-2">
-							<input
-								type="submit"
-								class="btn btn-outline-secondary text-black my-4"
-								value="check calories"
-								name="check-calories" />
-						</div>
-						<!-- <div class="col-12">
-							<div class="row items-row">
-								<div class="col-md-6">
-									<label for="items" class="form-label">items</label>
-									<select id="items" class="form-select">
-										<option selected>Choose...</option>
-										<option>chicken</option>
-										<option>meat</option>
-										<option>onion</option>
-										<option>tomato</option>
-										<option>rise</option>
-									</select>
-								</div>
-								<div class="col-md-4">
-									<label for="serving-size" class="form-label"
-										>serving size <small>in grams</small></label
-									>
-									<input
-										type="number"
-										class="form-control"
-										id="serving-size"
-										placeholder="200g" />
-								</div>
-								<div class="col-md-1 btn-group pt-4">
-									<label for="serving-size" class="form-label pb-3"></label>
-									<button
-										type="button"
-										onclick="addItem()"
-										class="btn btn-success form-control btn-sm fs-5 fw-bolder rounded-start">
-										<i class="bi-plus-lg"></i>
-									</button>
-									<label for="serving-size" class="form-label pb-3"></label>
-									<button
-										type="button"
-										onclick="removeItem()"
-										class="btn btn-danger form-control btn-sm fs-5 fw-bolder rounded-end">
-										<i class="bi-trash"></i>
-									</button>
-								</div>
-							</div>
-						</div> -->
-						<div class="col-12">
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" id="public-check" />
-								<label class="form-check-label" for="public-check">
-									make this meal public
-								</label>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<label for="total-calories" class="form-label me-1"
-								>total calories:</label
-							>
-							<label id="total-calories" class="form-label">0</label>
-						</div>
-						<div class="col-12 text-center">
-							<button
-								type="submit"
-								class="btn btn-primary text-capitalize w-25"
-								name="create-meal">
-								create
-							</button>
-						</div>
-					</form>
-				</div>
-			</section>
-			<footer class="p-5 mt-5 text-capitalize">
-				<div class="container"><b>&copy;</b> created by <b>ali bin shoaib.</b></div>
-			</footer>
-		</main>
-		<script>
-			function addItem() {
-				// Clone the first item input and append it to the container
-				var clonedItem = $('#itemsContainer .item-row:first').clone();
-				clonedItem.find('input').val(''); // Clear the input values
-				$('#itemsContainer').append(clonedItem);
-			}
 
-			function removeItem(button) {
-				// Remove the parent row of the clicked remove button
-				$(button).closest('.item-row').remove();
-			}
-			function getMealInfo() {
-				const info = document.querySelector('input').value;
-				console.log('data');
-				const xhr = new XMLHttpRequest();
-				xhr.open(
-					'POST',
-					'http://localhost:8080/day/index.php?username=' + username
-				);
-				xhr.onload = () => {
-					if (xhr.status === 200) {
-						const data = JSON.parse(xhr.responseText);
-						console.table(data);
-						alert(xhr.responseText);
-					} else alert(xhr.responseText);
-				};
-				xhr.send(username);
-			}
-		</script>
-	</body>
+				<div id="meals-container" class="row g-5 ">
+				</div>
+			</div>
+		</section>
+
+		<footer class="p-5 mt-5 text-capitalize">
+			<div class="container"><b>&copy;</b> created by <b>ali bin shoaib.</b></div>
+		</footer>
+	</main>
+</body>
+<script src="./assets/script/main.js"></script>
+
 </html>

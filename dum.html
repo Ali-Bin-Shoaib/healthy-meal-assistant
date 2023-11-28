@@ -1,0 +1,92 @@
+<!-- FORM -->
+<div
+	class="container text-capitalize bg-white rounded-5 p-3 bg-body-tertiary bg-opacity-75 form-container">
+	<h1 class="text-center">create a meal</h1>
+	<form class="row g-3 p-3" method="post" action="./server/index.php">
+		<div class="col-md-6">
+			<label for="title" class="form-label">title</label>
+			<input type="text" class="form-control" id="title" name="title" />
+		</div>
+		<div class="col-md-6">
+			<label for="image" class="form-label">image</label>
+			<input type="file" class="form-control" id="image" />
+		</div>
+		<div class="col-md-10">
+			<label for="meal">meal</label>
+			<input
+				type="text"
+				class="form-control"
+				id="meal"
+				name="meal-items"
+				value="250 chicken and 2 onions and 1 tomato" />
+		</div>
+		<div class="col-md-2">
+			<input
+				type="submit"
+				class="btn btn-outline-secondary text-black my-4"
+				value="check calories"
+				name="check-calories" />
+		</div>
+		<!-- <div class="col-12">
+							<div class="row items-row">
+								<div class="col-md-6">
+									<label for="items" class="form-label">items</label>
+									<select id="items" class="form-select">
+										<option selected>Choose...</option>
+										<option>chicken</option>
+										<option>meat</option>
+										<option>onion</option>
+										<option>tomato</option>
+										<option>rise</option>
+									</select>
+								</div>
+								<div class="col-md-4">
+									<label for="serving-size" class="form-label"
+										>serving size <small>in grams</small></label
+									>
+									<input
+										type="number"
+										class="form-control"
+										id="serving-size"
+										placeholder="200g" />
+								</div>
+								<div class="col-md-1 btn-group pt-4">
+									<label for="serving-size" class="form-label pb-3"></label>
+									<button
+										type="button"
+										onclick="addItem()"
+										class="btn btn-success form-control btn-sm fs-5 fw-bolder rounded-start">
+										<i class="bi-plus-lg"></i>
+									</button>
+									<label for="serving-size" class="form-label pb-3"></label>
+									<button
+										type="button"
+										onclick="removeItem()"
+										class="btn btn-danger form-control btn-sm fs-5 fw-bolder rounded-end">
+										<i class="bi-trash"></i>
+									</button>
+								</div>
+							</div>
+						</div> -->
+		<div class="col-12">
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" id="public-check" />
+				<label class="form-check-label" for="public-check">
+					make this meal public
+				</label>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<label for="total-calories" class="form-label me-1">total calories:</label>
+			<label id="total-calories" class="form-label">0</label>
+		</div>
+		<div class="col-12 text-center">
+			<button
+				type="submit"
+				class="btn btn-primary text-capitalize w-25"
+				name="create-meal">
+				create
+			</button>
+		</div>
+	</form>
+</div>
