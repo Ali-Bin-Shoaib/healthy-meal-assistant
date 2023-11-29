@@ -24,7 +24,7 @@ footer {
 	/* backdrop-filter: blur(10px); */
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	position: relative;
+	/* position: relative; */
 }
 
 /* .main-page-background::after {
@@ -39,8 +39,4 @@ footer {
 } */
 #meals-container{
 	transition: all 300ms;
-}
-body{
-	/* backdrop-filter: blur(9px); */
-
 }

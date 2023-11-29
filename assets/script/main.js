@@ -1,7 +1,9 @@
 const app_id = '&app_id=6f910b47';
 const app_key = '&app_key=bdc8725b2e30f6fbc5dfebe2cde4a04b';
 let query = '&q=';
-const url = `https://api.edamam.com/api/recipes/v2?type=public${app_id + app_key}&health=alcohol-free`;
+const url = `https://api.edamam.com/api/recipes/v2?type=public${
+	app_id + app_key
+}&health=alcohol-free&health=pork-free&health=kosher`;
 const test =
 	'https://api.edamam.com/api/recipes/v2?type=public&app_id=6f910b47&app_key=bdc8725b2e30f6fbc5dfebe2cde4a04b&health=alcohol-free&field=label&field=image';
 $(function () {
@@ -91,10 +93,12 @@ $(function () {
 				$('#loading').addClass('visually-hidden');
 				console.log('data: ', data); // data received
 				if (data.hits.length > 0) {
-					console.log(data.hits.length);
 					$('#meals-container').text('');
+					$('.modal').remove();
+					let counter = 0;
 					data.hits.forEach((data) => {
-						renderMealCard(data);
+						renderMealCard(data.recipe, counter);
+						renderModel(data.recipe, counter++);
 					});
 				} else {
 					console.log('success but no data');
@@ -112,43 +116,82 @@ $(function () {
 			console.log('status', status);
 		});
 	}
-	function renderMealCard(data) {
+	function renderMealCard(data, id) {
 		const template = `					
-							<div class="col-md-3 h-100" id="card-container">
-								<div class="card d-flex flex-column overflow-hidden">
-									<img src="${data.recipe.image}" class="card-img" 
-										alt="${data.recipe.label}" />
-									<div class="card-body flex-grow-1 text-truncate">
-										<b class="card-title  ">${data.recipe.label}</b>
-										<div class="card-text my-2">
-											<b class="meal-calories">Calories: ${data.recipe.calories.toFixed(0)} </b>
-										</div>
-								<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailsModal">
-								details
-								</button>
+		<div class="col-md-3 h-100" id="card-container">
+			<div class="card d-flex flex-column overflow-hidden">
+				<img src="${data.image}" class="card-img" alt="${data.label}" />
+				<div class="card-body flex-grow-1 text-truncate">
+					<b class="card-title  ">${data.label}</b>
+					<div class="card-text my-2">
+						<b class="meal-calories">Calories: ${data.calories.toFixed(0)} </b>
+					</div>
+					<button type="button" class="btn btn-primary" data-bs-backdrop="false"
+						data-bs-toggle="modal" data-bs-target="#card${id}">
+						Details
+					</button>
+				</div>
 
-								<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
-									<div class="modal-dialog">
-										<div class="modal-content">
-										<div class="modal-header">
-											<h1 class="modal-title fs-5" id="detailsModalLabel">Modal title</h1>
-											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-										</div>
-										<div class="modal-body">
-											test
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-											<button type="button" class="btn btn-primary">Save changes</button>
-										</div>
-										</div>
-									</div>
-								</div>		
-							</div>
-								</div>
-							</div>
+			</div>
+		</div>
 		`;
 		$('#meals-container').append(template);
+	}
+	function renderModel(data, id) {
+		const template = `		<div class="modal fade" id="card${id}" tabindex="-1" aria-labelledby="card${id}Label" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-scrollable modal-xl ">
+				<div class="modal-content ">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5 text-capitalize" id="card${id}Label">meal details</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-md-8">
+									<h3 class="text-capitalize"> ${data.label}</h3>
+									<ul class="list-unstyled">
+									${data.ingredients
+										.map((i) => {
+											const template = `<li>
+											<div class="d-flex gap-2 align-items-center border-bottom border-black p-3">
+											<img src="${i.image}" alt="${i.image}" class="rounded-5" width="100" >
+											<b class="text-capitalize">${i.food} </b>
+											</div>
+										</li>`;
+											return template;
+										})
+										.join('')}
+									</ul>
+								</div>
+								<div class="col-md-4 ms-auto">
+									<h2 class="text-capitalize">calories: ${data.calories.toFixed(0)}</h2>
+									<div>
+										<h2 class="text-capitalize">total nutrition</h2>
+										<ul class="list-unstyled">
+											${data.digest
+												.map((d) => {
+													const template = `<li>
+													<div class='d-flex gap-2 border-bottom border-black'>
+														<b >${d.label}: ${d.total.toFixed(1)} ${d.unit}</b>
+													</div>
+												</li>`;
+													return template;
+												})
+												.join('')}
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>`;
+		$('footer').before(template);
 	}
 	function parseObjectToQueryString(object) {
 		return '&' + new URLSearchParams(object).toString();
@@ -156,7 +199,7 @@ $(function () {
 	$(document).on('mouseenter', 'img', function () {
 		$(this).css({
 			transition: '300ms',
-			transform: 'scale(1.1)',
+			transform: 'scale(1.150)',
 		});
 	});
 	$(document).on('mouseleave', 'img', function () {
