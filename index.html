@@ -22,7 +22,6 @@
 				<a class="navbar-brand" href="./">
 					<img src="./assets/images/healthy-food-assistant-high-resolution-logo-transparent.svg" alt="logo"
 						width="75" />
-					<!-- <b class="text-center">diet meal assistant</b> -->
 				</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
 					aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,13 +36,11 @@
 							<a class="nav-link text-white" href="./calories-info.html">what is calories?</a>
 						</li>
 					</ul>
-					<!-- <a class="btn btn-lg btn-outline-light px-3" href="./login.html">
-						<i class="bi-person me-2"></i>login</a> -->
 				</div>
 			</div>
 		</nav>
 	</header>
-	<main class="main-page-background hero-text">
+	<main class="main-page-background hero-text ">
 		<section class="container-fluid p-0 hero-section py-5 text-capitalize ">
 			<h1 class="text-white display-1 text-center p-5 my-5 hero-text fw-semibold">
 				be healthy with us
@@ -155,31 +152,62 @@
 					</select>
 				</div>
 				<div class="d-flex gap-2">
-					<label class="form-label ">calories </label>
+					<label class="form-label fw-bold">calories </label>
 					<input type="range" class="form-range" id="caloriesRange" min="0" max="5000" value="">
 					<b></b>
 
 				</div>
-				<!-- <div class="d-flex">
-					<button class="btn btn-secondary">search</button>
-					
-				</div> -->
 			</div>
 			<hr />
 			<div class="container mt-5 px-5  ">
 				<div id="loading" class="text-center visually-hidden ">
 
-					<div class="spinner-border  " role="status">
+					<div class="spinner-border" role="status">
 					</div>
 				</div>
 
 				<div id="meals-container" class="row g-5 ">
+					<div class="col-md-3 h-100" id="card-container">
+						<div class="card d-flex flex-column overflow-hidden">
+							<img src="${data.recipe.image}" class="card-img" alt="${data.recipe.label}" />
+							<div class="card-body flex-grow-1 text-truncate">
+								<b class="card-title  ">${data.recipe.label}</b>
+								<div class="card-text my-2">
+									<b class="meal-calories">Calories: ${data.recipe.calories.toFixed(0)} </b>
+								</div>
+								<button type="button" class="btn btn-primary" data-bs-toggle="modal"
+									data-bs-target="#detailsModal">
+									details
+								</button>
+								<div class="modal fade " id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h1 class="modal-title fs-5" id="detailsModalLabel">Modal title</h1>
+												<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+											</div>
+											<div class="modal-body">
+												test
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+												<button type="button" class="btn btn-primary">Save changes</button>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+
 				</div>
 			</div>
 		</section>
 
 		<footer class="p-5 mt-5 text-capitalize">
-			<div class="container"><b>&copy;</b> created by <b>ali bin shoaib.</b></div>
+			<div class="container"><b>&copy;</b> created by <b>ali bin shoaib.</b> powered by Edamam API</div>
 		</footer>
 	</main>
 </body>

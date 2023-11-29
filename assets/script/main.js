@@ -120,11 +120,31 @@ $(function () {
 										alt="${data.recipe.label}" />
 									<div class="card-body flex-grow-1 text-truncate">
 										<b class="card-title  ">${data.recipe.label}</b>
-										<div class="card-text">
-											<b class="meal-calories">Calories:${data.recipe.calories.toFixed(0)} </b>
+										<div class="card-text my-2">
+											<b class="meal-calories">Calories: ${data.recipe.calories.toFixed(0)} </b>
 										</div>
-										<a href="#" class="btn btn-primary">Details</a>
+								<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailsModal">
+								details
+								</button>
+
+								<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+										<div class="modal-header">
+											<h1 class="modal-title fs-5" id="detailsModalLabel">Modal title</h1>
+											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<div class="modal-body">
+											test
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+											<button type="button" class="btn btn-primary">Save changes</button>
+										</div>
+										</div>
 									</div>
+								</div>		
+							</div>
 								</div>
 							</div>
 		`;

@@ -1,13 +1,5 @@
-/* .hero-section { */
-/* background-image: url('../../assets/images/top-ten-foods-for-health-2x.jpg'); */
-/* background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat; */
-/* } */
-.hero-text {
-	backdrop-filter: opacity(0%);
-	/* background-color: rgba(94, 94, 94, 0.712); */
-}
+
+
 header {
 	background: linear-gradient(to left, #266330, #4caf50);
 	padding: 10px;
@@ -29,15 +21,14 @@ footer {
 	background-image: url('../../assets/images/healthy-vegetables-wooden-table.jpg');
 	background-size: cover;
 	background-position: center;
-	/* backdrop-filter: brightness(10px); */
+	/* backdrop-filter: blur(10px); */
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	position: relative;
-	/* filter: blur(9px); */
 }
 
-.main-page-background::after {
-	background-color: rgba(0, 0, 0, 0.363);
+/* .main-page-background::after {
+	background-color: rgba(0, 0, 0, 0.623);
 	content: ' ';
 	width: 100%;
 	height: 100%;
@@ -45,7 +36,11 @@ footer {
 	top: 0;
 	z-index: -1;
 	position: absolute;
-}
+} */
 #meals-container{
 	transition: all 300ms;
+}
+body{
+	/* backdrop-filter: blur(9px); */
+
 }
