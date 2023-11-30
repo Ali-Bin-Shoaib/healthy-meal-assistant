@@ -53,39 +53,39 @@
 				<label for="goal" class="form-label fw-semibold col-md-2">Goal</label>
 				<div class="col-md-10">
 					<input type="radio" class="btn-check" name="goal" id="lose-weight" value="lose-weight"
-						autocomplete="off" checked />
+						autocomplete="off" checked  required/>
 					<label class="btn btn-outline-primary btn-sm" for="lose-weight">lose weight</label>
 					<input type="radio" name="goal" class="btn-check" id="maintain-weight" value="maintain-weight"
-						autocomplete="off" />
+						autocomplete="off" required/>
 					<label class="btn btn-outline-primary btn-sm" for="maintain-weight">maintain weight</label>
 					<input type="radio" name="goal" class="btn-check" id="gain-weight" value="gain-weight"
-						autocomplete="off" />
+						autocomplete="off" required/>
 					<label class="btn btn-outline-primary btn-sm" for="gain-weight">gain weight</label>
 				</div>
 				<label for="gender" class="form-label fw-semibold col-md-2">Gender</label>
 				<div class="col-md-10">
 					<input type="radio" class="btn-check" name="gender" value="female" id="female" checked
-						autocomplete="off" />
+						autocomplete="off" required />
 					<label class="btn btn-outline-primary btn-sm" for="female">Female</label>
-					<input type="radio" name="gender" value="male" class="btn-check" id="male" autocomplete="off" />
+					<input type="radio" name="gender" value="male" class="btn-check" id="male" autocomplete="off" required />
 					<label class="btn btn-outline-primary btn-sm" for="male">male</label>
 				</div>
 				<label for="height" class="form-label fw-semibold col-md-2">Height</label>
 				<div class="col-10">
 					<input type="number" name="height" id="height" class="form-control" placeholder="180" max="200"
-						min="50" />
+						min="50" required/>
 				</div>
 				<label for="weight" class="form-label fw-semibold col-md-2">Weight</label>
 				<div class="col-10">
-					<input type="number" name="weight" id="weight" class="form-control" max="1000" min="20" />
+					<input type="number" required name="weight" id="weight" class="form-control" max="1000" min="20" />
 				</div>
 				<label for="age" class="form-label fw-semibold col-md-2">Age</label>
 				<div class="col-10">
-					<input type="number" name="age" id="age" class="form-control" max="100" min="5" />
+					<input type="number" name="age" id="age" class="form-control" max="100" min="5" required/>
 				</div>
 				<label for="activity-level" class="form-label fw-semibold col-md-2">Activity level</label>
 				<div class="col-10">
-					<select name="activity-level" id="activity-level" class="form-select text-capitalize">
+					<select name="activity-level" id="activity-level" class="form-select text-capitalize" required>
 						<option value="active">active</option>
 						<option value="notActive">not active</option>
 						<option value="lightlyActive">lightly active</option>
