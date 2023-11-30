@@ -30,7 +30,7 @@
 				<div class="collapse navbar-collapse" id="navbarContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-4">
 						<li class="nav-item">
-							<a class="nav-link text-white" href="./meals.html">meals</a>
+							<a class="nav-link text-white" href="./">Home</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link text-white" href="./calories-info.html">what is calories?</a>
@@ -43,7 +43,7 @@
 	<main class="main-page-background hero-text ">
 		<section class="container-fluid p-0 hero-section py-5 text-capitalize ">
 			<h1 class="text-white display-1 text-center p-5 my-5 hero-text fw-semibold">
-				be healthy with us
+				find your next meal 
 			</h1>
 		</section>
 		<section class="container w-25 text-capitalize rounded-5 p-3 py-5 my-5 form-container shadow-lg">
@@ -86,9 +86,9 @@
 				<label for="activity-level" class="form-label fw-semibold col-md-2">Activity level</label>
 				<div class="col-10">
 					<select name="activity-level" id="activity-level" class="form-select text-capitalize">
+						<option value="active">active</option>
 						<option value="notActive">not active</option>
 						<option value="lightlyActive">lightly active</option>
-						<option value="active">active</option>
 						<option value="veryActive">very active</option>
 						<option value="extraActive">extremely active</option>
 					</select>
@@ -96,7 +96,7 @@
 
 				<label id="daily-calories" class="form-label fw-semibold col-md-2">calories: </label>
 				<div class="col-md-10">
-					<input type="number" id="calories" min="0" class="form-control" />
+					<input type="number" id="calories" min="0" class="form-control disabled" disabled />
 				</div>
 				<div class="col-12 text-center">
 					<button class="btn btn-success text-capitalize w-25" type="submit" name="calculate-calories">
@@ -121,21 +121,21 @@
 				<div class="d-flex gap-2">
 					<b class="form-label ">Dish Type </b>
 					<select name="dishType" id="dishType" class="text-capitalize form-select-sm">
-						<option value="biscuits and cookies">biscuits and cookies</option>
-						<option value="bread">bread</option>
-						<option value="cereals">cereals</option>
-						<option value="condiments and sauces">condiments and sauces</option>
-						<option value="desserts">desserts</option>
-						<option value="drinks">drinks</option>
 						<option value="main course">main course</option>
+						<option value="salad">salad</option>
+						<option value="bread">bread</option>
+						<option value="sandwiches">sandwiches</option>
+						<option value="cereals">cereals</option>
+						<option value="soup">soup</option>
+						<option value="condiments and sauces">condiments and sauces</option>
+						<option value="egg">egg</option>
+						<option value="drinks">drinks</option>
 						<option value="pancake">pancake</option>
 						<option value="preserve">preserve</option>
-						<option value="salad">salad</option>
-						<option value="sandwiches">sandwiches</option>
-						<option value="soup">soup</option>
 						<option value="starter">starter</option>
+						<option value="desserts">desserts</option>
+						<option value="biscuits and cookies">biscuits and cookies</option>
 						<option value="sweets">sweets</option>
-						<option value="egg">egg</option>
 
 					</select>
 

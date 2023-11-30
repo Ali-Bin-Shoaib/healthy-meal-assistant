@@ -4,18 +4,16 @@ let query = '&q=';
 const url = `https://api.edamam.com/api/recipes/v2?type=public${
 	app_id + app_key
 }&health=alcohol-free&health=pork-free&health=kosher`;
-const test =
-	'https://api.edamam.com/api/recipes/v2?type=public&app_id=6f910b47&app_key=bdc8725b2e30f6fbc5dfebe2cde4a04b&health=alcohol-free&field=label&field=image';
 $(function () {
 	$('form#calculate-calories').on('submit', (e) => {
 		e.preventDefault();
 		const calories = parseInt($('#calories').val());
-		if (calories < 0 || isNaN(calories)) {
+		// if (calories < 0 || isNaN(calories)) {
 			calculateDailyCalories();
-		} else {
+		// } else {
 			$('#caloriesRange').val(calories);
 			$('#caloriesRange+b').html(calories);
-		}
+		// }
 
 		getMeals(getFiltersValues(calories), true);
 	});
@@ -53,9 +51,9 @@ $(function () {
 	function calculateCalorieGoal(tdee, goal) {
 		let calorieGoal = 0;
 		if (goal === 'lose-weight') {
-			calorieGoal = tdee - 400;
+			calorieGoal = tdee - 700;
 		} else if (goal === 'gain-weight') {
-			calorieGoal = tdee + 400;
+			calorieGoal = tdee + 700;
 		} else calorieGoal = tdee;
 		if (calorieGoal < 0) calorieGoal = 0;
 		return calorieGoal;
@@ -80,7 +78,7 @@ $(function () {
 		const DietType = $('#dietType').val();
 		// const calories=$('#calories').val();
 		const caloriesRange = calories ? calories : $('#caloriesRange').val();
-		return { mealType, dishType, DietType, caloriesRange };
+		return { mealType, dishType, DietType, calories:caloriesRange };
 	}
 	function getMeals(params, isRandom = false) {
 		const query = parseObjectToQueryString(params);
@@ -105,7 +103,7 @@ $(function () {
 					$('#meals-container').html(`<div id="notFound" class='alert alert-warning'>No Meals Found</div>`);
 					setTimeout(() => {
 						$('#meals-container #notFound').remove();
-					}, 2000);
+					}, 3000);
 				}
 			} else {
 				$('#loading').addClass('visually-hidden');

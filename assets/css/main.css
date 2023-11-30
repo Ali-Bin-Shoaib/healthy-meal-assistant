@@ -1,8 +1,8 @@
 header {
-	background: linear-gradient(to left, #266330, #4caf50);
+	background: linear-gradient(to right, #025707, #4caf50);
 }
 footer {
-	background: linear-gradient(to right, #266330, #4caf50);
+	background: linear-gradient(to right, #025707, #4caf50);
 }
 header,
 footer {
@@ -18,22 +18,13 @@ footer {
 	background-image: url('../../assets/images/healthy-vegetables-wooden-table.jpg');
 	background-size: cover;
 	background-position: center;
-	backdrop-filter: blur(10px);
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	position: relative;
 }
 
-.main-page-background::after {
-	background-color: rgba(0, 0, 0, 0.582);
-	content: ' ';
-	width: 100%;
-	height: 100%;
-	display: block;
-	top: 0;
-	z-index: -1;
-	position: absolute;
-}
 #meals-container {
 	transition: all 300ms;
+}
+.bg-svg{
+	background: url('../images/wickedbackground.svg');
 }
