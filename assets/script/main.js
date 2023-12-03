@@ -1,6 +1,5 @@
 const app_id = '&app_id=6f910b47';
 const app_key = '&app_key=bdc8725b2e30f6fbc5dfebe2cde4a04b';
-let query = '&q=';
 const url = `https://api.edamam.com/api/recipes/v2?type=public${
 	app_id + app_key
 }&health=alcohol-free&health=pork-free&health=kosher`;
@@ -8,13 +7,9 @@ $(function () {
 	$('form#calculate-calories').on('submit', (e) => {
 		e.preventDefault();
 		const calories = parseInt($('#calories').val());
-		// if (calories < 0 || isNaN(calories)) {
-			calculateDailyCalories();
-		// } else {
-			$('#caloriesRange').val(calories);
-			$('#caloriesRange+b').html(calories);
-		// }
-
+		calculateDailyCalories();
+		$('#caloriesRange').val(calories);
+		$('#caloriesRange+b').html(calories);
 		getMeals(getFiltersValues(calories), true);
 	});
 	$(document).on('change', '#mealType,#dishType,#dietType,#caloriesRange', function () {
@@ -22,6 +17,17 @@ $(function () {
 	});
 	$('#caloriesRange').on('input', function (e) {
 		$('#caloriesRange+b').text($(this).val());
+	});
+	$(document).on('mouseenter', 'img', function () {
+		$(this).css({
+			transition: '300ms',
+			transform: 'scale(1.150)',
+		});
+	});
+	$(document).on('mouseleave', 'img', function () {
+		$(this).css({
+			transform: 'scale(1)',
+		});
 	});
 	//* calculate calories for a preston based on gender, weight,height, and age
 	function calculateBMR(gender, weight, height, age) {
@@ -58,6 +64,7 @@ $(function () {
 		if (calorieGoal < 0) calorieGoal = 0;
 		return calorieGoal;
 	}
+	//* calculate calories from user input
 	function calculateDailyCalories() {
 		const selectedGoal = $('input[name="goal"]:checked').val();
 		const selectedGender = $('input[name="gender"]:checked').val();
@@ -72,24 +79,26 @@ $(function () {
 		dailyCalories.val(totalCalories);
 		return totalCalories;
 	}
+	//* get mealType, dishType, dietType, and calories
 	function getFiltersValues(calories) {
 		const mealType = $('#mealType').val();
 		const dishType = $('#dishType').val();
 		const DietType = $('#dietType').val();
-		// const calories=$('#calories').val();
 		const caloriesRange = calories ? calories : $('#caloriesRange').val();
-		return { mealType, dishType, DietType, calories:caloriesRange };
+		return { mealType, dishType, DietType, calories: caloriesRange };
 	}
 	function getMeals(params, isRandom = false) {
 		const query = parseObjectToQueryString(params);
 		console.log('🚀 url:', url + query);
-		// const requestUrl = url + query;
 		$('#loading').removeClass('visually-hidden');
 		const requestUrl = isRandom ? url + query + '&random=true' : url + query;
+		sendRequest(requestUrl);
+	}
+	function sendRequest(requestUrl) {
 		$.getJSON(requestUrl, (data, status) => {
 			if (status == 'success') {
 				$('#loading').addClass('visually-hidden');
-				console.log('data: ', data); // data received
+				console.log('data: ', data);
 				if (data.hits.length > 0) {
 					$('#meals-container').text('');
 					$('.modal').remove();
@@ -194,15 +203,4 @@ $(function () {
 	function parseObjectToQueryString(object) {
 		return '&' + new URLSearchParams(object).toString();
 	}
-	$(document).on('mouseenter', 'img', function () {
-		$(this).css({
-			transition: '300ms',
-			transform: 'scale(1.150)',
-		});
-	});
-	$(document).on('mouseleave', 'img', function () {
-		$(this).css({
-			transform: 'scale(1)',
-		});
-	});
 });
