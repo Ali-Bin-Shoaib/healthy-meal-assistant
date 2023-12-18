@@ -1,6 +1,7 @@
 header {
 	background: linear-gradient(to right, #025707, #4caf50);
 }
+/* this style for footer style */
 footer {
 	background: linear-gradient(to right, #025707, #4caf50);
 }
@@ -30,6 +31,7 @@ footer {
 #meals-container {
 	transition: all 300ms;
 }
+/*  background image*/
 .bg-svg{
 	background: url('../images/wickedbackground.svg');
 }
